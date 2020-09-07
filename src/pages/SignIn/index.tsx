@@ -9,7 +9,7 @@ import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 import * as Yup from 'yup';
 import getValidationErrors from '../../utils/getValidationErrors';
-import { AuthContext } from '../../context/AuthContext';
+import { AuthContext, useAuth } from '../../context/AuthContext';
 
 interface SignInFormData {
   email: string;
@@ -19,7 +19,7 @@ interface SignInFormData {
 const SignIn: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
 
-  const { user, signIn } = useContext(AuthContext);
+  const { user, signIn } = useAuth();
 
   console.log(user);
 
