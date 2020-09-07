@@ -1,39 +1,31 @@
 import React from 'react';
 import { Container, Toast } from './styles';
 import { FiAlertCircle, FiXCircle } from 'react-icons/fi';
+import { ToastMessage } from '../../hooks/toast';
 
-const ToastContainer: React.FC = () => {
+interface ToastContainerProps {
+  messages: ToastMessage[];
+}
+
+const ToastContainer: React.FC<ToastContainerProps> = ({ messages }) => {
   return (
     <Container>
-      <Toast type="info" hasDescription>
-        <FiAlertCircle />
-        <div>
-          <strong>Deu Ruim galera</strong>
-          <p>Vai dar pra ir não........ PQP</p>
-          <button type="button">
-            <FiXCircle size={18} />
-          </button>
-        </div>
-      </Toast>
-      <Toast type="error" hasDescription={false}>
-        <FiAlertCircle />
-        <div>
-          <strong>Deu Ruim galera</strong>
-          <button type="button">
-            <FiXCircle size={18} />
-          </button>
-        </div>
-      </Toast>
-      <Toast type="success" hasDescription>
-        <FiAlertCircle />
-        <div>
-          <strong>Deu Ruim galera</strong>
-          <p>Vai dar pra ir não........ PQP</p>
-          <button type="button">
-            <FiXCircle size={18} />
-          </button>
-        </div>
-      </Toast>
+      {messages.map(message => (
+        <Toast
+          key={message.id}
+          type={message.type}
+          hasDescription={!!message.description}
+        >
+          <FiAlertCircle size={20} />
+          <div>
+            <strong>{message.title}</strong>
+            {message.description && <p>Vai dar pra ir não........ PQP</p>}
+            <button type="button">
+              <FiXCircle size={18} />
+            </button>
+          </div>
+        </Toast>
+      ))}
     </Container>
   );
 };
