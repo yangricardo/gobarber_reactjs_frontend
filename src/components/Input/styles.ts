@@ -70,4 +70,11 @@ export const Error = styled(Tooltip)`
     margin: 0;
     padding: 0;
   }
+  span {
+    background: #c53030;
+    color: #fff;
+    &::before {
+      border-color: #c53030 transparent;
+    }
+  }
 `;
