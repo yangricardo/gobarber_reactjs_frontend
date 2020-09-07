@@ -10,7 +10,7 @@ export const Container = styled.div`
 export const Content = styled.div`
   display: flex;
   flex-direction: column;
-  place-content: center; /*Aplica ao mesmo tempo justify-content e align-content*/
+  justify-content: center; /*Aplica ao mesmo tempo justify-content e align-content*/
   align-items: center;
   width: 100%;
   max-width: 40vw;
