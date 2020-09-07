@@ -7,10 +7,11 @@ import { FiMail, FiLock, FiUser, FiLogIn, FiArrowLeft } from 'react-icons/fi';
 
 const SignUp: React.FC = () => (
   <Container>
+    <Background />
     <Content>
       <img src={logoImg} alt="GoBarber" />
       <form>
-        <h1>Entre no GoBarber</h1>
+        <h1>Faça seu cadastro</h1>
         <Input name="name" icon={FiUser} placeholder="Nome" />
         <Input name="email" icon={FiMail} type="email" placeholder="E-mail" />
         <Input
@@ -26,7 +27,6 @@ const SignUp: React.FC = () => (
         Voltar
       </a>
     </Content>
-    <Background></Background>
   </Container>
 );
 
