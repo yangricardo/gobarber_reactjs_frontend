@@ -9,7 +9,6 @@ import {
 } from 'react-icons/fi';
 import { ToastMessage, useToast } from '../../../hooks/toast';
 import { setTimeout } from 'timers';
-import { info } from 'console';
 
 interface ToastProps {
   message: ToastMessage;
