@@ -10,6 +10,7 @@ import { Form } from '@unform/web';
 import * as Yup from 'yup';
 import getValidationErrors from '../../utils/getValidationErrors';
 import { useAuth } from '../../hooks/auth';
+import { useToast } from '../../hooks/toast';
 
 interface SignInFormData {
   email: string;
@@ -20,6 +21,8 @@ const SignIn: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
 
   const { user, signIn } = useAuth();
+
+  const { addToast } = useToast();
 
   console.log(user);
 
@@ -37,15 +40,16 @@ const SignIn: React.FC = () => {
           abortEarly: false,
         });
         const { email, password } = data;
-        signIn({ email, password });
+        await signIn({ email, password });
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
           formRef.current?.setErrors(errors);
         }
+        addToast();
       }
     },
-    [signIn],
+    [signIn, addToast],
   );
 
   return (
